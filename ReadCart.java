@@ -6,21 +6,19 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import model.Products;
+import model.CartItems;
 import model.Cart;
 
-public class ReadRecord {
+public class ReadCart {
 	
 	private Connection connection;
 	private ResultSet results;
 	
-	private Products products = new Products();
-	private String prodID;
-	
-	private Cart cart = new Cart();
+	private CartItems cartItems = new CartItems();
 	private String cartID;
 	
-	public ReadRecord(String dbName, String uname, String pwd, String cartID){
+	
+	public ReadCart(String dbName, String uname, String pwd, String cartID){
 		
 		String url = "jdbc:mysql://localhost:3306/" + dbName + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 		this.cartID = cartID;
@@ -38,7 +36,7 @@ public class ReadRecord {
 	}
 	
 	public void doRead(){
-		String query = "select * from cart where cartID = ?";
+		String query = "select * from CartItems where cartID = ?";
 		
 		try {
 			PreparedStatement ps = connection.prepareStatement(query);
@@ -49,18 +47,9 @@ public class ReadRecord {
 			
 			this.results.next();
 			
-			product.setSku(this.results.getString("sku"));
-			product.setProductType(this.results.getString("productType"));
-			product.setFlavor(this.results.getString("flavor"));
-			product.setCost(this.results.getDouble("cost"));
-			product.setPrice(this.results.getDouble("price"));
-			product.setQuantity(this.results.getInt("quantity"));
-			
-			products.setProdID(this.results.getInt("prodID"));
-			products.setProdType(this.results.getString("prodType"));
-			products.setProdName(this.results.getString("prodName"));
-			
-			cart.setCartID(this.results.getInt("cartID"));
+			cartItems.setCartID(this.results.getInt("cartID"));
+			cartItems.setProdID(this.results.getInt("prodID"));
+			cartItems.setQuantity(this.results.getInt("quantity"));
 			
 			
 		} catch (SQLException e) {
@@ -69,8 +58,8 @@ public class ReadRecord {
 		}
 	}
 	
-	public Product getProduct(){
-		return this.product;
+	public CartItems getCartItems(){
+		return this.cartItems;
 	}
 	
 	
