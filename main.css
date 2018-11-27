@@ -3,6 +3,10 @@ body {
 	background-color: #493829;
 }
 
+p{
+	color: white;
+}
+
 #title2 {
 	font-family: 'Audiowide', cursive;
 	font-size: 50px;
@@ -24,7 +28,7 @@ body {
 #par {
 	font-family: 'Oxygen', sans-serif;
 	text-align: center;
-	text-color: white;
+	color: white;
 }
 
 #mainimg {
@@ -51,7 +55,7 @@ a {
 }
 
 a:visited {
-	color: black;
+	color: #AEADB8;
 	text-decoration: none;
 }
 
@@ -82,10 +86,32 @@ a:visited {
 	width: 45%;
     margin-left: 10px;
     float: right;
-   
 }
 
 .submit{
 	text-align: center;
 	float: right;
 }
+
+.clearfix{
+	overflow: auto
+}
+
+.ham{
+	float: left;
+	height: auto;
+	width: 100px;
+}
+
+.baddecoy{
+	float: left;
+	height: auto;
+	width: 100px;
+}
+
+.owlgirl{
+	float: left;
+	height: auto;
+	width: 100px;
+}
+
