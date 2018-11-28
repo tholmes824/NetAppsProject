@@ -12,13 +12,12 @@
 
 <body>
 	
-<header id="header"> D2Decoys
-</header>
+<header id="title2"> D2Decoys </header>
 
 <h1 id="navi">
-	<a href="./.jsp">View Cart</a>
-	<a href="products.jsp">Shop</a>
-	<a href="location.jsp">Store Locator</a>
+	<a href="./.html">View Cart</a>
+	<a href="./.html">Shop</a>
+	<a href="./.html">Store Locator</a>
 </h1>
 
 	<img id="mainimg" src="images/hunting.jpg">
@@ -32,8 +31,8 @@ Welcome to D2Decoys-the best silhouette decoys on the market. Be sure to check o
 <br>
 
 <footer id="footer">
-	Net Apps Project<br>
-	Elizabeth Chambers, Taylor Holmes, & Ashley Hong
+<p>Net Apps Project <br>
+Elizabeth Chambers, Taylor Holmes, & Ashley Hong</p>
 </footer>
 </body>
 </html>
