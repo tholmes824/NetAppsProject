@@ -44,7 +44,7 @@ public class LocationServlet extends HttpServlet {
 		Location location = new Location();
 		
 		//get data
-		int zip = Integer.getInteger(request.getParameter("zip"));
+		String state = request.getParameter("state"));
 		
 		//readLocation
 		ReadLocation rl= new ReadLocation("name", "root", "password", "state");
