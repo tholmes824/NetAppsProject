@@ -2,6 +2,9 @@ body {
 	font-family: 'Oxygen', sans-serif;
 	background-color: #493829;
 }
+ul {
+	list-style-type: none;
+}
 
 p{
 	color: white;
@@ -17,12 +20,18 @@ p{
 
 #navi {
 	font-family: 'Audiowide', cursive;
-	font-size: 50px;
-	display: inline;
+	font-size: 200%;
 	color: #BDD09F;
 	float: left;
 	padding: 10px;
 	text-align: center;
+	width: 100%;
+}
+
+#navi li {
+	margin: auto 1% auto 1%;
+	float: left;
+	text-style: none;
 }
 
 #par {
@@ -47,9 +56,8 @@ p{
 #footer{
 	text-align: center;
 	position: fixed;
-	bottom: 0;
 	width: 60%;
-	margin: auto 20% auto 20%;
+	margin: 15% 20% auto 20%;
 }
 
 a {
@@ -71,7 +79,6 @@ a:visited {
 }
 
 #new {
-	background-color: clear;
 	display: inline-block;
 	width: 50%;
   	float: right;
@@ -88,12 +95,12 @@ a:visited {
     margin: 0 auto 1% 20%;
 }
 
-#returner div {
+#returner label {
 	color: white;
 	width: 25%;
     float: left;
     text-align: right;
-    margin: 0 auto 1% 20%;
+    margin: 0 auto 1% 18%;
 }
 
 #new input {
@@ -116,7 +123,11 @@ a:visited {
 	width: 65px;
 	text-align: center;
 	float: right;
-	margin-top: 10%;
+	margin-top: 20%;
+}
+
+.bottomBox {
+	margin-bottom: 20%;
 }
 
 .clearfix{
@@ -140,6 +151,4 @@ a:visited {
 	height: auto;
 	width: 100px;
 }
-
-
 
