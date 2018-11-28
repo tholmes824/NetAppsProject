@@ -19,7 +19,7 @@ USE `d2decoy` ;
 -- -----------------------------------------------------
 -- Table `d2decoy`.`Customers`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `d2decoy`.`Customers` (
+CREATE TABLE IF NOT EXISTS `d2decoy`.`Customer` (
   `customerID` INT NOT NULL,
   `firstName` VARCHAR(45) NULL,
   `lastName` VARCHAR(45) NULL,
