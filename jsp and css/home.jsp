@@ -16,8 +16,8 @@
 
 <h1 id="navi">
 	<a href="./.html">View Cart</a>
-	<a href="./.html">Shop</a>
-	<a href="./.html">Store Locator</a>
+	<a href="products.jsp">Shop</a>
+	<a href="location.jsp">Store Locator</a>
 </h1>
 
 	<img id="mainimg" src="images/hunting.jpg">
