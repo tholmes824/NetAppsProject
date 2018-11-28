@@ -15,9 +15,9 @@
 <div id="returner">
 	<p>Sign in to Your Account</p>
 	<form type="text" action="home.jsp" method="post">
-	<div>Email:</div> <input type="text" id="email" name="email" value=""/><br>
-	<div>Password:</div> <input type="text" id="password" name="password" value=""/><br><br>
-	<input class="submit" style="width:65px;" type="submit" id="submit" name="submit" value="Submit!" /></div>
+	<label>Email:</label> <input type="text" id="email" name="email" value=""/><br>
+	<label>Password:</label> <input type="text" id="password" name="password" value=""/><br><br>
+	<input style="width:65px;" type="submit" id="submit" name="submit" value="Submit!" /></div>
 	</form>
 </div>
 
