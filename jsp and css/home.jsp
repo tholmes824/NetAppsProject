@@ -14,11 +14,16 @@
 	
 <header id="title2"> D2Decoys </header>
 
-<h1 id="navi">
-	<a href="./.html">View Cart</a>
-	<a href="products.jsp">Shop</a>
-	<a href="location.jsp">Store Locator</a>
-</h1>
+<nav id="navi">
+	<ul>
+		<li><a href="home.jsp">Home</a></li>
+		<li><a href="cart.jsp">ViewCart</a></li>
+		<li><a href="products.jsp">Shop</a></li>
+		<li><a href="location.jsp">StoreLocator</a></li>
+		<li style="float: right;"><a>Hello, JavaName</a></li>
+	</ul>
+</nav>
+<hr>
 
 	<img id="mainimg" src="images/hunting.jpg">
 	
