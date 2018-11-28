@@ -11,14 +11,18 @@
 </head>
 <body>
 
-<header id="header"> D2Decoys
-</header>
+<header id="title2"> D2Decoys</header>
 
-<h1 id="navi">
-	<a href="./.jsp">View Cart</a>
-	<a href="products.jsp">Shop</a>
-	<a href="./.jsp">Store Locator</a>
-</h1>
+<nav id="navi">
+	<ul>
+		<li><a href="home.jsp">Home</a></li>
+		<li><a href="cart.jsp">ViewCart</a></li>
+		<li><a href="products.jsp">Shop</a></li>
+		<li><a href="location.jsp">StoreLocator</a></li>
+		<li style="float: right;"><a>Hello, JavaName</a></li>
+	</ul>
+</nav>
+<hr>
 
 <div class=clearfix>
 <img class=ham src="images/half-a-man1.jpg">
@@ -33,7 +37,7 @@ $28.00<br>
 </div>
 
 <div class=clearfix>
-<img class=baddecoy src="images/baddecoy.jpg">
+<img class=baddecoy src="images/joke.jpg">
 <p>
 Wired Turkey<br>
 Full sized turkey decoy.
@@ -44,7 +48,7 @@ $25.00<br>
 </div>
 
 <div class=clearfix>
-<img class=owlgirl src="images/owldecoy.jpg">
+<img class=owlgirl src="images/owl.jpg">
 <p>
 Lovable Owl (girl not included)<br>
 Full size owl decoy
