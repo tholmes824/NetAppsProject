@@ -57,7 +57,7 @@ public class LocationServlet extends HttpServlet {
 		//pass grocery and control to the updateform.jsp
 		request.setAttribute("results", results);
 		
-		String url = "/location.jsp";
+		String url = "/locationresults.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 				
