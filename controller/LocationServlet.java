@@ -44,17 +44,16 @@ public class LocationServlet extends HttpServlet {
 		Location location = new Location();
 		
 		//get data
-		String state = request.getParameter("state"));
+		String state = request.getParameter("state");
 		
 		//readLocation
-		ReadLocation rl= new ReadLocation("name", "root", "password", "state");
+		ReadLocation rl= new ReadLocation("d2decoy", "root", "12042108a", state);
 		
 		//get data
 		rl.doRead();
 		
-		Location results = rl.getLocation();
-		
-		//pass grocery and control to the updateform.jsp
+		String results = rl.getHTMLTable();
+	
 		request.setAttribute("results", results);
 		
 		String url = "/locationresults.jsp";
