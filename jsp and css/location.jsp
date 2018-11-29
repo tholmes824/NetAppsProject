@@ -14,7 +14,7 @@
 <label>
 Enter the state that you live in:
 </label>
-<input type="text" name="firstname"><br>
+<input type="text" name="state"><br>
 <input type="submit" name="submission" value="Search" />
 </form>
 
