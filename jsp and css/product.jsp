@@ -58,6 +58,11 @@ $300<br>
 <input type="hidden" id="3" name="loveableowl" value="3">
 </div>
 
+<footer id="footer">
+	<p>Net Apps Project <br>
+	Elizabeth Chambers, Taylor Holmes, & Ashley Hong</p>
+</footer>
+
 
 
 </body>
