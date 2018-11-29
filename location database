@@ -1,0 +1,17 @@
+INSERT INTO Location
+VALUES ('1', 'Hunter''s Heaven', '234 Correll Way', '', 'Piercy', 'Tennessee', '1000');
+
+INSERT INTO Location
+VALUES ('2', 'Give us an A', '145 Amos NE', '', 'Huber', 'Georgia', '2000');
+
+INSERT INTO Location
+VALUES ('3', 'Chasing Ducks', '765 Moore-Rooker Blvd', 'Suite 8', 'Srinivasan', 'Florida', '3000');
+
+INSERT INTO Location
+VALUES ('4', 'D2Decoys', '600 Benson Street ', '', 'Chester', 'Texas', '4000');
+
+INSERT INTO Location
+VALUES ('5', 'Please :)', '4630 Caldwell Rd', 'Suite 3', 'Tiwana', 'Georgia', '2200');
+
+INSERT INTO Location
+VALUES ('6', 'Australian Adventure', '349 It''Cold Street', 'Suite 9', 'Watson', 'Montana', '9000');
