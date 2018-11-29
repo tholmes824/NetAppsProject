@@ -50,20 +50,6 @@ public class ReadLocation {
 			}
 		}
 		
-		public void doCheck() {
-			String query = "select * from Location";
-			
-			try {
-				PreparedStatement ps = connection.prepareStatement(query);
-				this.results = ps.executeQuery();
-				this.results.next();
-				
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
 		public String getHTMLTable() {
 			String table = "";
 			table += "<table border = 1>";
