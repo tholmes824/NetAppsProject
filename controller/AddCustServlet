@@ -50,6 +50,7 @@ public class AddCustServlet extends HttpServlet {
 		String city = request.getParameter("city");
 		String state = request.getParameter("state");
 		int zip = Integer.parseInt(request.getParameter("zip"));
+		String password = request.getParameter("password");
 	
 		// set up a customer object
 		
@@ -64,10 +65,11 @@ public class AddCustServlet extends HttpServlet {
 		customer.setCity(city);
 		customer.setState(state);
 		customer.setZip(zip);
+		customer.setPassword(password);
 		
 	    
 		// set up an addQuery object
-	    AddQuery aq = new AddQuery("d2decoyhhc", "root", "#1LOVEschool");
+	    AddQuery aq = new AddQuery("d2decoy", "root", "#1LOVEschool");
 	    
 		// pass the book to addQuery to add to the database
 	    aq.doAdd(customer);
