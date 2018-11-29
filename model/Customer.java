@@ -3,7 +3,6 @@ package model;
 public class Customer {
 	
 	private int custID;
-	private String password;
 	private String fName;
 	private String lName;
 	private String email;
@@ -13,9 +12,10 @@ public class Customer {
 	private String city;
 	private String state;
 	private int zip;
+	private String password;
 	
 	public Customer(int custID, String fName, String lName, String email, int phone, String address1, String address2,
-			String city, String state, int zip) {
+			String city, String state, int zip, String password) {
 		this.custID = custID;
 		this.fName = fName;
 		this.lName = lName;
@@ -26,6 +26,7 @@ public class Customer {
 		this.city = city;
 		this.state = state;
 		this.zip = zip;
+		this.password = password;
 	}
 	
 	public Customer() {
@@ -111,9 +112,13 @@ public class Customer {
 	public void setZip(int zip) {
 		this.zip = zip;
 	}
-	
-	
-	
-	
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
 }
