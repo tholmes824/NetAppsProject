@@ -69,7 +69,7 @@ public class AddCustServlet extends HttpServlet {
 		
 	    
 		// set up an addQuery object
-	    AddQuery aq = new AddQuery("d2decoy", "root", "#1LOVEschool");
+	    AddQuery aq = new AddQuery("d2decoy", "root", "password");
 	    
 		// pass the book to addQuery to add to the database
 	    aq.doAdd(customer);
