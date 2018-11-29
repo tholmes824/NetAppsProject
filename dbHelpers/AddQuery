@@ -28,7 +28,7 @@ public class AddQuery {
 	}
 	
 	public void doAdd(Customer customer){
-		String query = "insert into customer (fName, lName, email, phone, address1, address2, city, state, zip, custID) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String query = "insert into customer (fName, lName, email, phone, address1, address2, city, state, zip, password) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try {
 			PreparedStatement ps = connection.prepareStatement(query);
@@ -42,7 +42,7 @@ public class AddQuery {
 			ps.setString(7, customer.getCity());
 			ps.setString(8, customer.getState());
 			ps.setInt(9, customer.getZip());
-			ps.setInt(10, customer.getCustID());
+			ps.setString(10, customer.getPassword());
 			
 			ps.executeUpdate();
 			
