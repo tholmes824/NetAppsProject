@@ -36,8 +36,8 @@ Welcome to D2Decoys-the best silhouette decoys on the market. Be sure to check o
 <br>
 
 <footer id="footer">
-<p>Net Apps Project <br>
-Elizabeth Chambers, Taylor Holmes, & Ashley Hong</p>
+	<p>Net Apps Project <br>
+	Elizabeth Chambers, Taylor Holmes, & Ashley Hong</p>
 </footer>
 </body>
 </html>
