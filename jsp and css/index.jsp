@@ -13,16 +13,16 @@
 <h1 id="title2"> Welcome! <br> Please Sign In or Register</h1>
 
 <div id="returner">
-	<p>Sign in to Your Account</p>
+	<h3>Sign in to Your Account</h3>
 	<form type="text" action="home.jsp" method="post">
 	<label>Email:</label> <input type="text" id="email" name="email" value=""/><br>
 	<label>Password:</label> <input type="text" id="password" name="password" value=""/><br><br>
-	<input style="width:65px;" type="submit" id="submit" name="submit" value="Submit!" /></div>
+	<input class="submit" style="width:65px;" type="submit" id="submit" name="submit" value="Submit!" /></div>
 	</form>
 </div>
 
 <div id="new">
-	<p>New User? Create an Account!</p>
+	<h3>New User? Create an Account!</h3>
 	<form type="text" action="home.jsp" method="post">
 	
 	<label>First Name:</label> <input type="text" id="fName" name="fName" value=""/><br>
