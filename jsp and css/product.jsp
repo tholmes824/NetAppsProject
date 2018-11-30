@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ page import="model.Customer"%>
+ <%
+ Customer custID = (Customer) request.getAttribute("custID"); 
+ Customer name = (Customer) request.getAttribute("Name");
+ %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,47 +21,104 @@
 <nav id="navi">
 	<ul>
 		<li><a href="home.jsp">Home</a></li>
-		<li><a href="cart.jsp">ViewCart</a></li>
+		<li><a href="cart.jsp" action="viewCart" name=<%=custID%>>ViewCart</a></li>
 		<li><a href="products.jsp">Shop</a></li>
 		<li><a href="location.jsp">StoreLocator</a></li>
-		<li style="float: right;"><a>Hello, JavaName</a></li>
+		<li style="float: right;"><a>Hello, <%=name%></a></li>
 	</ul>
 </nav>
 <hr>
 
-<div class=clearfix>
-<img class=ham src="images/half-a-man1.jpg">
-<p>
-Half-A-Man
-Size emulates an immature Jake.
-Comes with two metal ground stakes.
-<br>
-$28.00<br>
-</p>
-<input class=ham type="hidden" id="1" name="half-a-man" value="1">
-</div>
+<table>
+	<th>
+	Product
+	</th>
+	<th>
+	Description
+	</th>
+	<th>
+	Price
+	</th>
+	<th>
+	Add to Cart
+	</th>
 
-<div class=clearfix>
-<img class=baddecoy src="images/joke.jpg">
-<p>
-Wired Turkey<br>
-Full sized turkey decoy.
-Turkeys won't even notice the difference.<br>
-$25.00<br>
-</p>
-<input type="hidden" id="2" name="wiredturkey" value="2">
-</div>
+	
+	<tr>
+	<td>
+	Half-A-Man
+	<img class=ham src="images/half-a-man1.jpg">
+	</td>
+	
+	<td>
+	Size emulates an immature Jake. <br>
+	Comes with two metal ground stakes.
+	</td>
+	
+	<td>
+	$28.00
+	</td>
+	
+	<td>
+		<form type="text" action="holder" method="post">
+		<label>Quantity</label> <input type="text" id="quantity" name="quantity" value="0" required/><br>
+		<input class="shop" type="submit" id="submit" name="submit" value="Submit!" /></div>
+		<input class=ham type="hidden" id="1" name="half-a-man" value="1">
+		</form>
+	</td>
+	
+	
+	</tr>
+	<td>
+	Wired Turkey
+	<img class=baddecoy src="images/joke.jpg">
+	</td>
+	
+	<td>
+	Full sized turkey decoy. <br>
+	Turkeys won't even notice the difference.
+	</td>
+	
+	<td>
+	$30.00
+	</td>
+	
+	<td>
+		<form type="text" action="holder" method="post">
+		<label>Quantity</label> <input type="text" id="quantity" name="quantity" value="0" required/><br>
+		<input class="shop" type="submit" id="submit" name="submit" value="Submit!" /></div>
+		<input class=ham type="hidden" id="1" name="half-a-man" value="1">
+		</form>
+	</td>
+	</tr>
+	
+	
+	</tr>
+	<td>
+	Lovable Owl (girl not included)
+	<img class=owlgirl src="images/owl.jpg">
+	</td>
+	
+	<td>
+	Full size owl decoy <br>
+	So lovable the girl won't leave it alone!
+	</td>
+	
+	<td>
+	$300.00
+	</td>
+	
+	<td>
+		<form type="text" action="holder" method="post">
+		<label>Quantity</label> <input type="text" id="quantity" name="quantity" value="0" required/><br>
+		<input class="shop" type="submit" id="submit" name="submit" value="Submit!" /></div>
+		<input class=ham type="hidden" id="1" name="half-a-man" value="1">
+		</form>
+	</td>
+	</tr>
+	
+</table>
 
-<div class=clearfix>
-<img class=owlgirl src="images/owl.jpg">
-<p>
-Lovable Owl (girl not included)<br>
-Full size owl decoy
-So lovable the girl won't leave it alone!<br>
-$300<br>
-</p>
-<input type="hidden" id="3" name="loveableowl" value="3">
-</div>
 
 <footer id="footer">
 	<p>Net Apps Project <br>
