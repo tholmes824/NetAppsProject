@@ -9,10 +9,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dbHelpers.ReadCart;
+import dbHelpers.ReturnCust;
 import model.CartItems;
 import model.Customer;
+import model.Inventory;
 import model.Cart;
 
 /**
@@ -20,6 +23,9 @@ import model.Cart;
  */
 @WebServlet(urlPatterns = {"/CartServlet" , "/viewCart"})
 public class CartServlet extends HttpServlet {
+	
+	private HttpSession session; 
+	
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -43,27 +49,17 @@ public class CartServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		CartItems cartItems = new CartItems();
 		
-		Customer cust = new Customer();
-		ArrayList<Integer> cartArray = new ArrayList<Integer>();
-			for(int i = 0; i<= cartArray.size(); i++) {
-				cartArray.add(cust.getCustID());
-			}
 		
-		if()
-		
-		//make userID = cartID?????
-		
-		ReadCart ci = new ReadCart("d2decoy", "root", "12042108a", cartID);
-		
-		ci.doRead();
-		
-		String cart = ci.getHTMLTable();
-		
+		ReadCart rc = new ReadCart ("d2decoys", "root", "#1LOVEschool");
+		rc.doRead();
+		String table = rc.getHTMLTable();
+		request.setAttribute("table", table);
 		String url = "/cart.jsp";
+		
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-		dispatcher.forward(request, response);
+		dispatcher.forward(request, response);	
 				
 		
 		
