@@ -1,0 +1,92 @@
+package controller;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import dbHelpers.ReadCart;
+import dbHelpers.AddProd;
+import model.CartItems;
+import model.Inventory;
+
+/**
+ * Servlet implementation class ProductServlet
+ */
+@WebServlet("/ProductServlet")
+public class ProductServlet extends HttpServlet {
+	
+	private HttpSession session; 
+	
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ProductServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doPost(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		session = request.getSession();
+		
+		int prodID = Integer.parseInt(request.getParameter("prodID"));
+		int quantity = Integer.parseInt(request.getParameter("quantity"));
+		
+		
+		//creates product Array and adds products based on prodID
+		ArrayList<Integer> prodArray = new ArrayList<Integer>();
+		
+		for(int i = 0; i <= prodArray.size(); i++) {
+			prodArray.add(prodID);
+		}
+		
+		// Create a ReadCart helper object
+		AddProd ap = new AddProd("d2decoy", "root", "#1LOVEschool", prodID, quantity);
+		
+		ap.doRead();
+		CartItems cartItems = ap.getCartItems();
+		
+		//Create inventory to compare numStock to quantity
+		String msg = "";
+		
+		Inventory inventory = new Inventory();
+		
+		int stock = inventory.getNumStock();
+		if(stock > quantity) {
+			session = request.getSession(true);
+			session.setAttribute("cartItems", cartItems);
+			msg = "Your items have been added to your cart.";
+		} else {
+			msg = "Sorry, but there is " + stock + "left in stock. Please lower your quantity or select a new product";
+		}
+		
+		String url = "/CartServlet";
+		
+		request.setAttribute("msg", msg);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+		dispatcher.forward(request, response);	
+				
+	}
+
+}
