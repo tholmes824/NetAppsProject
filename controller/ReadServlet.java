@@ -10,9 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.mysql.cj.Session;
-
-import dbHelpers.ReadQuery;
 import dbHelpers.ReturnCust;
 import model.Customer;
 
@@ -57,21 +54,22 @@ public class ReadServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
-		// Create a ReadQuery helper object
+		// Create a ReadCust helper object
 		ReturnCust rc = new ReturnCust("d2decoy", "root", "#1LOVEschool", email, password);
 		
-		Customer customer = rc.verifyCust(email, password);
+		rc.doRead();
+		Customer customer = rc.getCustomer();
 		
-		if(customer != null) {
+		String url = "/index.jsp";
+		if(!customer.getEmail().equals("999")) {
 			session = request.getSession(true);
 			session.setAttribute("customer", customer);
-			String url = "home.jsp";
-
-			RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-			dispatcher.forward(request, response);	
-		}	
+		 url = "home.jsp";
+			
+		}
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+		dispatcher.forward(request, response);	
 		
 	}
 
 }
-
