@@ -8,8 +8,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.mysql.cj.Session;
 
 import dbHelpers.ReadQuery;
+import dbHelpers.ReturnCust;
+import model.Customer;
 
 /**
  * Servlet implementation class ReadServlet
@@ -18,9 +23,13 @@ import dbHelpers.ReadQuery;
 		description = "Controller for reading the customer table", 
 		urlPatterns = { 
 				"/ReadServlet", 
-				"/readCust"
+				"/returner"
 		})
+
 public class ReadServlet extends HttpServlet {
+	
+	private HttpSession session; 
+	
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -42,19 +51,25 @@ public class ReadServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		session = request.getSession();
+		
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		
 		// Create a ReadQuery helper object
-		ReadQuery rq = new ReadQuery("d2decoyhhc", "root", "#1LOVEschool");
+		ReturnCust rc = new ReturnCust("d2decoy", "root", "#1LOVEschool", email, password);
 		
-		// Get the html table from the ReadQuery object
-		rq.doRead();
-		String table = rq.getHTMLTable();
+		Customer customer = rc.verifyCust(email, password);
 		
-		// pass execution control to read.jsp along with the table
-		request.setAttribute("table", table);
-		String url = "/home.jsp";
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-		dispatcher.forward(request, response);
+		if(customer != null) {
+			session = request.getSession(true);
+			session.setAttribute("customer", customer);
+			String url = "home.jsp";
+
+			RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+			dispatcher.forward(request, response);	
+		}	
 		
 	}
 
