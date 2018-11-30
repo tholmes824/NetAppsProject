@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="model.Customer"%>
-<%
-Customer custID = (Customer) request.getAttribute("custID"); 
-Customer name = (Customer) request.getAttribute("fName");
-%>
-
-
+    
+	<%@ page import="model.Customer"%>
+	<%
+	Customer custID = (Customer) request.getAttribute("custID"); 
+	Customer name = (Customer) request.getAttribute("fName");
+	%>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,10 +16,9 @@ Customer name = (Customer) request.getAttribute("fName");
 <meta charset="UTF-8">
 <title>Home</title>
 </head>
-
 <body>
 	
-<header id="title2"> D2Decoys </header>
+<header id="title1">D2Decoys</header>
 
 <nav id="navi">
 	<ul>
@@ -32,21 +31,28 @@ Customer name = (Customer) request.getAttribute("fName");
 	</ul>
 </nav>
 <hr>
-
+<div class="body-content">
+	<p class="par">
+	Welcome to D2Decoys-the best silhouette decoys on the market.
+	Check out our decoys & follow us on social media!
+	</p>
+		
 	<img id="mainimg" src="images/hunting.jpg">
 	
-<p id="par">
-Welcome to D2Decoys-the best silhouette decoys on the market. Be sure to check out our decoys and follow us on social media!
-</p>
-
-<br>
-<br>
-<br>
+	<h2>Our Mission:</h2>
+	
+	<p class="par">
+	Our Mission at D2Decoys is to first honor the Lord Jesus Christ in all business that is done, 
+	and to then provide hunters with the best equipment necessary for a successful hunt.
+	Our Vision at D2Decoys is to be a highly known and recognizable brand that will continue to innovate 
+	and provide hunters with the best equipment through a continual improvement of traditions, values, and products.
+	</p>
+</div>
+	
 
 <footer id="footer">
-<p>Net Apps Project <br>
-Elizabeth Chambers, Taylor Holmes, & Ashley Hong</p>
+	<p>Net Apps Project <br>
+	Elizabeth Chambers, Taylor Holmes, & Ashley Hong</p>
 </footer>
 </body>
 </html>
-
