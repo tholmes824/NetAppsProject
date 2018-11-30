@@ -61,6 +61,8 @@ public class ReadServlet extends HttpServlet {
 		Customer customer = rc.getCustomer();
 		
 		String url = "/index.jsp";
+	
+		//checks if customer's email does not equal 999 to send it to the home page
 		if(!customer.getEmail().equals("999")) {
 			session = request.getSession(true);
 			session.setAttribute("customer", customer);
