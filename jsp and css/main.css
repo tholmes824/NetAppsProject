@@ -185,3 +185,14 @@ table {
 tr:hover {
 	background-color: #816C5B;
 }
+
+.shop
+{
+	background-color: #BDD09F;
+	border-color: #493829;
+	color: #493829;
+	width: 65px;
+	text-align: center;
+	float: right;
+	margin-top: 20%;
+}
