@@ -40,7 +40,7 @@ public class AddCustServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// get the data
-	    int custID = Integer.parseInt(request.getParameter("custID"));
+	    //int custID = Integer.parseInt(request.getParameter("custID"));
 		String fName = request.getParameter("fName");
 		String lName = request.getParameter("lName");
 		String email = request.getParameter("email");
@@ -55,7 +55,7 @@ public class AddCustServlet extends HttpServlet {
 		// set up a customer object
 		
 		Customer customer = new Customer();
-		customer.setCustID(custID);
+		//customer.setCustID(custID);
 		customer.setfName(fName);
 		customer.setlName(lName);
 		customer.setEmail(email);
@@ -69,13 +69,13 @@ public class AddCustServlet extends HttpServlet {
 		
 	    
 		// set up an addQuery object
-	    AddQuery aq = new AddQuery("d2decoy", "root", "password");
+	    AddQuery aq = new AddQuery("d2decoy", "root", "#1LOVEschool");
 	    
 		// pass the book to addQuery to add to the database
 	    aq.doAdd(customer);
 	    
 		// pass execution control to the ReadServlet
-	    String url = "/read";
+	    String url = "home.jsp";
 	    
 	    RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 	    dispatcher.forward(request, response);
