@@ -16,8 +16,10 @@ public class ReadQuery {
 	
 	private Connection connection;
 	private ResultSet results;
+	private Customer customer = new Customer();
+	private String email;
 	
-	public ReadQuery(String dbName, String uname, String pwd){
+	public ReadQuery(String dbName, String uname, String pwd, String email){
 		String url = "jdbc:mysql://localhost:3306/" + dbName + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 		
 		// set up the driver
@@ -40,79 +42,52 @@ public class ReadQuery {
 	}
 	
 	public void doRead(){
-		String query = "select * from customer";
+		String query = "select * from Customer where email=?";
 		
 		try {
-			PreparedStatement ps = this.connection.prepareStatement(query);
-			this.results= ps.executeQuery();
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, email);
+			this.results = ps.executeQuery();
+			this.results.next(); 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
-	public String getHTMLTable(){
-		String table ="";
-		table += "<table>";
+	public String emailCheck() {
+		
+		String checkEmail = "";
 		
 		try {
-			while(this.results.next()){
-				Customer customer = new Customer();
-				customer.setCustID(this.results.getInt("custID"));
-				customer.setfName(this.results.getString("fName"));
-				customer.setlName(this.results.getString("lName"));
-				customer.setEmail(this.results.getString("email"));
-				customer.setPhone(this.results.getInt("phone"));
-				customer.setAddress1(this.results.getString("address1"));
-				customer.setAddress2(this.results.getString("address2"));
-				customer.setCity(this.results.getString("city"));
-				customer.setState(this.results.getString("state"));
-				customer.setZip(this.results.getInt("zip"));
-				
-				table +="<tr>";
-				table +="<td>";
-				table += customer.getCustID();
-				table +="</td>";
-				table +="<td>";
-				table += customer.getfName();
-				table +="</td>";
-				table +="<td>";
-				table += customer.getlName();
-				table +="</td>";
-				table +="<td>";
-				table += customer.getEmail();
-				table +="</td>";
-				table +="<td>";
-				table += customer.getPhone();
-				table +="</td>";
-				table +="<td>";
-				table += customer.getAddress1();
-				table +="</td>";
-				table +="<td>";
-				table += customer.getAddress2();
-				table +="</td>";
-				table +="<td>";
-				table += customer.getCity();
-				table +="</td>";
-				table +="<td>";
-				table += customer.getState();
-				table +="</td>";
-				table +="<td>";
-				table += customer.getZip();
-				table +="</td>";
-				table +="<td>";
-				   table += "<a href=update?custID=" + customer.getCustID() + " >update</a> <a href=delete?custID=" + customer.getCustID() + " >delete</a>";
-				table +="</td>";
-				table +="</tr>";
-				
-			}
+			Customer customer = new Customer();
+			customer.setEmail(this.results.getString("email"));
+			checkEmail = customer.getEmail();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		table += "</table>";
-		return table;
+		return checkEmail;
+		
+	}
+	
+	public String passwordCheck() {
+		
+		String checkPassword = "";
+		
+		try {
+			Customer customer = new Customer();
+			customer.setPassword(this.results.getString("password"));
+			checkPassword = customer.getPassword();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return checkPassword;
+		
 	}
 	
 }
