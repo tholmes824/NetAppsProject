@@ -24,6 +24,7 @@
 		<li><a href="cart.jsp" action="viewCart" name=<%=custID%>>ViewCart</a></li>
 		<li><a href="products.jsp">Shop</a></li>
 		<li><a href="location.jsp">StoreLocator</a></li>
+		<li><a href="contact.jsp">ContactUs</a></li>
 		<li style="float: right;"><a>Hello, <%=name%></a></li>
 	</ul>
 </nav>
