@@ -3,7 +3,7 @@
  <%@ page import="model.Customer"%>
  <%
  Customer custID = (Customer) request.getAttribute("custID"); 
- Customer name = (Customer) request.getAttribute("Name");
+ Customer name = (Customer) request.getAttribute("fName");
  %>
 <!DOCTYPE html>
 <html>
