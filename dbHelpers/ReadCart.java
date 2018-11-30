@@ -8,20 +8,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import model.CartItems;
-import model.Customer;
-import model.Location;
-import model.Cart;
 
 public class ReadCart {
 	
 	private Connection connection;
 	private ResultSet results;
 	private CartItems cartItems = new CartItems();
-	private Customer cust = new Customer();
-	private String cartID;
+	private int cartID;
+	private int quantity;
+	private int prodID;
 	
 	
-	public ReadCart(String dbName, String uname, String pwd, String cartID){
+	public ReadCart(String dbName, String uname, String pwd){
 		
 		String url = "jdbc:mysql://localhost:3306/" + dbName + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 		this.cartID = cartID;
@@ -39,17 +37,20 @@ public class ReadCart {
 	}
 	
 	public void doRead(){
-		String query = "select * from CartItems where cartID = ?";
+		String query = "select * from CartItems where prodID = ?";
 		
 		try {
 			PreparedStatement ps = connection.prepareStatement(query);
-			ps.setString(1, this.cartID);
-			this.results = ps.executeQuery();
-			this.results.next();
 			
-			cartItems.setCartID(this.results.getInt("cartID"));
-			cartItems.setProdID(this.results.getInt("prodID"));
-			cartItems.setQuantity(this.results.getInt("quantity"));
+			ps.setInt(1, this.prodID);
+			ps.setInt(2, this.quantity);
+			
+			this.results = ps.executeQuery();
+			
+			if (this.results.next()) {
+				cartItems.setProdID(this.results.getInt(1));
+				cartItems.setQuantity(this.results.getInt(2));
+			}
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
