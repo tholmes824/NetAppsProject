@@ -6,54 +6,64 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
 import model.Customer;
 
 public class ReturnCust {
 	
 	private Connection connection;
 	private ResultSet results;
-	private PreparedStatement verifyCust;
+	
+	private Customer customer = new Customer();
+	private String email;
+	private String password;
+
 	
 	public ReturnCust(String dbName, String uname, String pwd, String email, String password){
-		String url = "jdbc:mysql://localhost:3306/" + dbName + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 		
-		// set up the driver
+		String url = "jdbc:mysql://localhost:3306/" + dbName + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+
+		this.email = email;
+		this.password = password;
+		
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			this.connection = DriverManager.getConnection(url, uname, pwd);
-		} catch (InstantiationException e) {
+			
+		} catch (InstantiationException | IllegalAccessException
+				| ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		}
+		
+	}
+	
+	public void doRead(){
+		String query = "select * from Customer where email = ? and password = ?";
+		
+		//sets default email to 999
+		customer.setEmail("999");
+		
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			
+			ps.setString(1, this.email);
+			ps.setString(2, this.password);
+			
+			this.results = ps.executeQuery();
+			
+			if (this.results.next()) {
+				customer.setEmail(this.results.getString(1));
+				customer.setPassword(this.results.getString(2));
+			}	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
-	
-	public Customer verifyCust(String email, String password){
-		String query = "select * from Customer where email=? and password=?";
-		
-		Customer customer = null;
-		
-		try {
-			PreparedStatement ps = connection.prepareStatement(query);
-			ps.setString(1, email);
-			ps.setString(2, password);
-			this.results = ps.executeQuery();
-			this.results.next(); 
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return customer;
+	public Customer getCustomer(){
+		return this.customer;
 	}
 
 }
