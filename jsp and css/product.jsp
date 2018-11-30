@@ -4,6 +4,8 @@
  <%
  Customer custID = (Customer) request.getAttribute("custID"); 
  Customer name = (Customer) request.getAttribute("fName");
+ 
+ String msg = (String) request.getAttribute("msg");
  %>
 <!DOCTYPE html>
 <html>
@@ -61,10 +63,10 @@
 	</td>
 	
 	<td>
-		<form type="text" action="holder" method="post">
+		<form type="text" action="ProductServlet" method="post">
 		<label>Quantity</label> <input type="text" id="quantity" name="quantity" value="0" required/><br>
 		<input class="shop" type="submit" id="submit" name="submit" value="Submit!" /></div>
-		<input class=ham type="hidden" id="1" name="half-a-man" value="1">
+		<input class=ham type="hidden" name="prodID" value="1">
 		</form>
 	</td>
 	
@@ -85,10 +87,10 @@
 	</td>
 	
 	<td>
-		<form type="text" action="holder" method="post">
+		<form type="text" action="ProductServlet" method="post">
 		<label>Quantity</label> <input type="text" id="quantity" name="quantity" value="0" required/><br>
 		<input class="shop" type="submit" id="submit" name="submit" value="Submit!" /></div>
-		<input class=ham type="hidden" id="1" name="half-a-man" value="1">
+		<input class=ham type="hidden" name="prodID" value="2">
 		</form>
 	</td>
 	</tr>
@@ -110,10 +112,10 @@
 	</td>
 	
 	<td>
-		<form type="text" action="holder" method="post">
+		<form type="text" action="ProductServlet" method="post">
 		<label>Quantity</label> <input type="text" id="quantity" name="quantity" value="0" required/><br>
 		<input class="shop" type="submit" id="submit" name="submit" value="Submit!" /></div>
-		<input class=ham type="hidden" id="1" name="half-a-man" value="1">
+		<input class=ham type="hidden" name="prodID" value="3">
 		</form>
 	</td>
 	</tr>
