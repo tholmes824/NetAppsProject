@@ -37,20 +37,15 @@ public class ReadCart {
 	}
 	
 	public void doRead(){
-		String query = "select * from CartItems where prodID = ?";
+		String query = "select * from CartItems where cartID = ?";
 		
 		try {
 			PreparedStatement ps = connection.prepareStatement(query);
 			
-			ps.setInt(1, this.prodID);
-			ps.setInt(2, this.quantity);
+			ps.setInt(1, this.cartID);
 			
 			this.results = ps.executeQuery();
 			
-			if (this.results.next()) {
-				cartItems.setProdID(this.results.getInt(1));
-				cartItems.setQuantity(this.results.getInt(2));
-			}
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -65,7 +60,6 @@ public class ReadCart {
 		try {
 			results.beforeFirst();
 			while(this.results.next()) {
-				CartItems cartItems = new CartItems();
 				cartItems.setCartID(this.results.getInt("cartID"));
 				cartItems.setProdID(this.results.getInt("prodID"));
 				cartItems.setQuantity(this.results.getInt("quantity"));
