@@ -51,7 +51,7 @@ public class CartServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		session = request.getSession();
 		
-		ReadCart rc = new ReadCart ("d2decoy", "root", "TayTay1*");
+		ReadCart rc = new ReadCart ("d2decoy", "root", "yourPass");
 		Cart c = (Cart) session.getAttribute("cart");
 		rc.doRead(c);
 		String table = rc.getHTMLTable(c);
