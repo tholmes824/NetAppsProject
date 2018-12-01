@@ -24,7 +24,7 @@ import model.Cart;
 @WebServlet(urlPatterns = {"/CartServlet" , "/viewCart"})
 public class CartServlet extends HttpServlet {
 	
-	private HttpSession session; 
+	private HttpSession session;
 	
 	private static final long serialVersionUID = 1L;
        
@@ -49,11 +49,12 @@ public class CartServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		session = request.getSession();
 		
-		
-		ReadCart rc = new ReadCart ("d2decoy", "root", "#1LOVEschool");
-		rc.doRead();
-		String table = rc.getHTMLTable();
+		ReadCart rc = new ReadCart ("d2decoy", "root", "TayTay1*");
+		Cart c = (Cart) session.getAttribute("cart");
+		rc.doRead(c);
+		String table = rc.getHTMLTable(c);
 		request.setAttribute("table", table);
 		String url = "/cart.jsp";
 		
