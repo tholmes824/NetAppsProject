@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import model.Cart;
 import model.CartItems;
 
 public class ReadCart {
@@ -36,54 +37,46 @@ public class ReadCart {
 		
 	}
 	
-	public void doRead(){
-		String query = "select * from CartItems where cartID = ?";
+	public void doRead(Cart c){
+//		String query = "select * from CartItems where cartID = ?";
+//		
+//		try {
+//			PreparedStatement ps = connection.prepareStatement(query);
+//			
+//			ps.setInt(1, this.cartID);
+//			
+//			this.results = ps.executeQuery();
+//			
+//			
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
-		try {
-			PreparedStatement ps = connection.prepareStatement(query);
-			
-			ps.setInt(1, this.cartID);
-			
-			this.results = ps.executeQuery();
-			
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
-	public String getHTMLTable() {
+	public String getHTMLTable(Cart c) {
 		String table = "";
 		table += "<table border = 1>";
 		
-		try {
-			results.beforeFirst();
-			while(this.results.next()) {
-				cartItems.setCartID(this.results.getInt("cartID"));
-				cartItems.setProdID(this.results.getInt("prodID"));
-				cartItems.setQuantity(this.results.getInt("quantity"));
-
+		ArrayList<CartItems> stuff = c.getArray();
+		
+			for (int i = 0; i < stuff.size(); i++) {
 				table += "<tr>";
 				table += "<td>";
-					table += cartItems.getCartID();
+					table += stuff.get(i).getCartID();
 				table += "</td>";
 				table += "<td>";
-					table += cartItems.getProdID();
+					table += stuff.get(i).getProdID();
 				table += "</td>";
 				table += "<td>";
-					table += cartItems.getQuantity();
+					table += stuff.get(i).getQuantity();
 				table += "</td>";
-					table += "<a href=update?quantity=" + cartItems.getQuantity() + ">Update</a> <a href=delete?prodID=" + cartItems.getProdID() + ">Delete</a>";
+					table += "<a href=update?quantity=" + stuff.get(i).getQuantity() + ">Update</a> <a href=delete?prodID=" + stuff.get(i).getProdID() + ">Delete</a>";
 				table += "</tr>";
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 		table += "</table>";
-		
 		return table;
 		}
 
