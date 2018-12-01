@@ -1,9 +1,14 @@
 package model;
 
+import java.util.ArrayList;
+
+import model.CartItems;
+
 public class Cart {
 	
 	private int cartID;
 	private int custID;
+	private ArrayList<CartItems> cartStuff = new ArrayList<CartItems>();
 	
 	
 	public Cart(int cartID, int custID) {
@@ -31,8 +36,12 @@ public class Cart {
 		this.custID = custID;
 	}
 
-
+	public void addToCart(CartItems cartItems) {
+		cartStuff.add(cartItems);
+	}
 	
-	
+	public ArrayList<CartItems> getArray() {
+		return this.cartStuff;
+	}
 
 }
