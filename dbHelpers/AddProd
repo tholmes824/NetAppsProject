@@ -19,7 +19,7 @@ public class AddProd {
 	private int prodID;
 	
 	
-	public AddProd(String dbName, String uname, String pwd, int prodID, int quantity){
+	public AddProd(String dbName, String uname, String pwd){
 		
 		String url = "jdbc:mysql://localhost:3306/" + dbName + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 		this.cartID = cartID;
@@ -37,13 +37,14 @@ public class AddProd {
 	}
 	
 	public void doAdd(CartItems cartItems){
-		String query = "insert into CartItems (prodID, quantity) values (?, ?)";
+		String query = "insert into CartItems (cartID, prodID, quantity) values (?, ?, ?)";
 		
 		try {
 			PreparedStatement ps = connection.prepareStatement(query);
 			
-			ps.setInt(1, cartItems.getProdID());
-			ps.setInt(1, cartItems.getQuantity());
+			ps.setInt(1, cartItems.getCartID());
+			ps.setInt(2, cartItems.getProdID());
+			ps.setInt(3, cartItems.getQuantity());
 			
 			ps.executeUpdate();
 			
@@ -52,6 +53,23 @@ public class AddProd {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public void doAddCart(CartItems cartItems) {
+		String query = "insert into Cart (cartID, custID) values (?, ?)";
+		
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			
+			ps.setInt(1, cartItems.getCartID());
+			ps.setInt(2, cartItems.getCartID());
+			
+			ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	
@@ -62,13 +80,13 @@ public class AddProd {
 			PreparedStatement ps = connection.prepareStatement(query);
 			
 			ps.setInt(1, this.prodID);
-			ps.setInt(2, this.quantity);
+			//ps.setInt(2, this.quantity);
 			
 			this.results = ps.executeQuery();
 			
 			if (this.results.next()) {
 				cartItems.setProdID(this.results.getInt(1));
-				cartItems.setQuantity(this.results.getInt(2));
+				cartItems.setQuantity(this.results.getInt("quantity"));
 			}
 			
 		} catch (SQLException e) {
@@ -76,6 +94,7 @@ public class AddProd {
 			e.printStackTrace();
 		}
 	}
+	
 	
 	public String getHTMLTable() {
 		String table = "";
