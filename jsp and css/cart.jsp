@@ -2,9 +2,19 @@
     pageEncoding="UTF-8"%>
  <%@ page import="model.Customer"%>
  <%
- String table = (String) request.getAttribute("cart");
- Customer custID = (Customer) request.getAttribute("custID"); 
- Customer name = (Customer) request.getAttribute("fName");
+Customer custID = (Customer) request.getAttribute("custID"); 
+String name = (String) request.getAttribute("fName");
+ 
+ String table = (String) request.getAttribute("cart");;
+ if(table!=null){
+
+	} else {
+		table = "Your cart is empty...";
+		table += "<br>";
+		table += "Add something to it! Go to the ";
+		table += "<a href='products.jsp'>shop</a>";
+		table += " page.";
+	}
  %>
 
 <!DOCTYPE html>
