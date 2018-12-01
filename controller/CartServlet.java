@@ -51,7 +51,7 @@ public class CartServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		
-		ReadCart rc = new ReadCart ("d2decoys", "root", "#1LOVEschool");
+		ReadCart rc = new ReadCart ("d2decoy", "root", "#1LOVEschool");
 		rc.doRead();
 		String table = rc.getHTMLTable();
 		request.setAttribute("table", table);
