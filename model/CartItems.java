@@ -40,6 +40,15 @@ public class CartItems {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "CartItems [cartID=" + cartID + ", prodID=" + prodID + ", quantity=" + quantity + "]";
+	}
+	
 	
 	
 	
