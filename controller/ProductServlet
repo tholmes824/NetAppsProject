@@ -64,7 +64,7 @@ public class ProductServlet extends HttpServlet {
 		cartItems.setQuantity(quantity);
 		
 		// Create a AddProd helper object
-		AddProd ap = new AddProd("d2decoy", "root", "TayTay1*");
+		AddProd ap = new AddProd("d2decoy", "root", "yourPass");
 		
 		cart.addToCart(cartItems);
 		
