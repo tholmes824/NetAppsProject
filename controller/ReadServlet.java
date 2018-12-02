@@ -60,8 +60,6 @@ public class ReadServlet extends HttpServlet {
 		rc.doRead();
 		Customer customer = rc.getCustomer();
 		
-		System.out.println(customer.getfName());
-		System.out.println(customer.getCustID());
 		
 		String url = "/index.jsp";
 	
