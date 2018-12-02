@@ -2,12 +2,11 @@
     pageEncoding="UTF-8"%>
  <%@ page import="model.Customer"%>
  <%
-Customer custID = (Customer) request.getAttribute("custID"); 
-String name = (String) request.getAttribute("fName");
+ Customer cust = (Customer) session.getAttribute("customer");
  
- String table = (String) request.getAttribute("cart");;
+ String table = (String) request.getAttribute("cart");
  if(table!=null){
-
+	 table = (String) request.getAttribute("cart");
 	} else {
 		table = "Your cart is empty...";
 		table += "<br>";
@@ -31,11 +30,11 @@ String name = (String) request.getAttribute("fName");
 <nav id="navi">
 	<ul>
 		<li><a href="home.jsp">Home</a></li>
-		<li><a href="cart.jsp" action="viewCart" name=<%=custID%>>ViewCart</a></li>
+		<li><a href="cart.jsp" action="viewCart" name=<%=cust.getCustID()%>>ViewCart</a></li>
 		<li><a href="products.jsp">Shop</a></li>
 		<li><a href="location.jsp">StoreLocator</a></li>
 		<li><a href="contact.jsp">ContactUs</a></li>
-		<li style="float: right;"><a>Hello, <%=name%></a></li>
+		<li style="float: right;"><a>Hello, <%=cust.getfName()%></a></li>
 	</ul>
 </nav>
 <hr>

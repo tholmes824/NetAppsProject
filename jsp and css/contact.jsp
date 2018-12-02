@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ page import="model.Customer"%>
+<%
+Customer cust = (Customer) session.getAttribute("customer");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,11 +20,11 @@
 <nav id="navi">
 	<ul>
 		<li><a href="home.jsp">Home</a></li>
-		<li><a href="cart.jsp">ViewCart</a></li>
+		<li><a href="cart.jsp" action="viewCart" name=<%=cust.getCustID()%>>ViewCart</a></li>
 		<li><a href="products.jsp">Shop</a></li>
 		<li><a href="location.jsp">StoreLocator</a></li>
 		<li><a href="contact.jsp">ContactUs</a></li>
-		<li style="float: right;"><a>Hello, null</a></li>
+		<li style="float: right;"><a>Hello, <%=cust.getfName()%></a></li>
 	</ul>
 </nav>
 <hr>
