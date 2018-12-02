@@ -55,10 +55,13 @@ public class ReadServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		// Create a ReadCust helper object
-		ReturnCust rc = new ReturnCust("d2decoy", "root", "#1LOVEschool", email, password);
+		ReturnCust rc = new ReturnCust("d2decoy", "root", "12042108a", email, password);
 		
 		rc.doRead();
 		Customer customer = rc.getCustomer();
+		
+		System.out.println(customer.getfName());
+		System.out.println(customer.getCustID());
 		
 		String url = "/index.jsp";
 	
