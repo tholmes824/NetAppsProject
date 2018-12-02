@@ -55,6 +55,8 @@ public class ReturnCust {
 			if (this.results.next()) {
 				customer.setEmail(this.results.getString(1));
 				customer.setPassword(this.results.getString(2));
+				customer.setfName(this.results.getString("fName"));
+				customer.setCustID((this.results.getInt("custID")));
 			}	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
