@@ -114,7 +114,9 @@ public class ReadCart {
 				table += "<td>";
 					table += ci.getQuantity();
 				table += "</td>";
+				table += "<td>";
 					table += "<a href=update?prodID=" + ci.getCartID() + ">Update</a> <a href=delete?prodID=" + ci.getCartID() + ">Delete</a>";
+				table += "</td>";
 				table += "</tr>";
 				
 			}
