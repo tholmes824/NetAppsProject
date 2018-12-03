@@ -36,6 +36,23 @@ public class AddProd {
 		
 	}
 	
+	public void doRemove(CartItems cartItems) {
+		String query = "delete from CartItems WHERE cartID = ? AND prodID = ?";
+		
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			
+			ps.setInt(1, cartItems.getCartID());
+			ps.setInt(2, cartItems.getProdID());
+			
+			ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public void doAdd(CartItems cartItems){
 		String query = "insert into CartItems (cartID, prodID, quantity) values (?, ?, ?)";
 		
@@ -119,7 +136,7 @@ public class AddProd {
 					table += cartItems.getQuantity();
 				table += "</td>";
 				table += "<td>";
-					table += "<a href=update?quantity=" + cartItems.getCartID() + ">Update</a> <a href=delete?cartID=" + cartItems.getCartID() + ">Delete</a>";
+					table += "<a href=update?quantity=" + cartItems.getCartID() + ">Update</a> <a href=delete?prodID=" + cartItems.getCartID() + ">Delete</a>";
 				table += "</td>";
 				table += "</tr>";
 			}
