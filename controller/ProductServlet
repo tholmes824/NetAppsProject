@@ -64,9 +64,11 @@ public class ProductServlet extends HttpServlet {
 		cartItems.setQuantity(quantity);
 		
 		// Create a AddProd helper object
-		AddProd ap = new AddProd("d2decoy", "root", "yourPass");
+		AddProd ap = new AddProd("d2decoy", "root", "#1LOVEschool");
 		
 		cart.addToCart(cartItems);
+		ap.doAddCart(cartItems);
+		ap.doAdd(cartItems);
 		
 		//Create inventory to compare numStock to quantity STILL NEED TO IMPLEMENT
 		/*String msg = "";
@@ -87,6 +89,7 @@ public class ProductServlet extends HttpServlet {
 		//request.setAttribute("msg", msg);
 		
 		session.setAttribute("cart", cart);
+		session.setAttribute("cartItems", cartItems);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);	
