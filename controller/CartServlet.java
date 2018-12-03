@@ -49,14 +49,18 @@ public class CartServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		session = request.getSession();
+		//session = request.getSession();
 		
 		ReadCart rc = new ReadCart ("d2decoy", "root", "#1LOVEschool");
-		Cart c = (Cart) session.getAttribute("cart");
-		CartItems ci = (CartItems) session.getAttribute("cartItems");
-		rc.doRead(ci);
+		
+		//Cart c = (Cart) session.getAttribute("cart");
+		//CartItems ci = (CartItems) session.getAttribute("cartItems");
+		
+		rc.doRead();
+		
 		//String table = rc.getHTMLTable(c);
 		String table = rc.getHTMLTable();
+		
 		request.setAttribute("table", table);
 		String url = "/cart.jsp";
 		
