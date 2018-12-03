@@ -56,6 +56,18 @@ public class ReadCart {
 		
 	}
 	
+	public void doRead(){
+		String query = "select * from cartItems";
+		
+		try {
+			PreparedStatement ps = this.connection.prepareStatement(query);
+			this.results= ps.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public String getHTMLTable(Cart c) {
 		String table = "";
 		table += "<table border = 1>";
@@ -102,7 +114,7 @@ public class ReadCart {
 				table += "<td>";
 					table += ci.getQuantity();
 				table += "</td>";
-					table += "<a href=update?quantity=" + ci.getQuantity() + ">Update</a> <a href=delete?prodID=" + ci.getQuantity() + ">Delete</a>";
+					table += "<a href=update?prodID=" + ci.getCartID() + ">Update</a> <a href=delete?prodID=" + ci.getCartID() + ">Delete</a>";
 				table += "</tr>";
 				
 			}
