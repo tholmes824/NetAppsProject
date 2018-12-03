@@ -118,7 +118,7 @@ public class AddProd {
 				table += "<td>";
 					table += cartItems.getQuantity();
 				table += "</td>";
-					table += "<a href=update?quantity=" + cartItems.getQuantity() + ">Update</a> <a href=delete?prodID=" + cartItems.getProdID() + ">Delete</a>";
+					table += "<a href=update?quantity=" + cartItems.getCartID() + ">Update</a> <a href=delete?prodID=" + cartItems.getCartID() + ">Delete</a>";
 				table += "</tr>";
 			}
 		} catch (SQLException e) {
