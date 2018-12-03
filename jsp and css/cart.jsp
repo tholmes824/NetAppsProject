@@ -30,7 +30,7 @@
 <nav id="navi">
 	<ul>
 		<li><a href="home.jsp">Home</a></li>
-		<li><a href="cart.jsp" action="viewCart" name=<%=cust.getCustID()%>>ViewCart</a></li>
+		<li><a href="CartServlet" name=<%=cust.getCustID()%>>ViewCart</a></li>
 		<li><a href="products.jsp">Shop</a></li>
 		<li><a href="location.jsp">StoreLocator</a></li>
 		<li><a href="contact.jsp">ContactUs</a></li>
