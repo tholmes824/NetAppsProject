@@ -71,18 +71,24 @@ public class ProductServlet extends HttpServlet {
 		ap.doAdd(cartItems);
 		
 		//Create inventory to compare numStock to quantity STILL NEED TO IMPLEMENT
-		/*String msg = "";
+	/*	String msg = "";
+		String url = "";
 		
 		Inventory inventory = new Inventory();
+		inventory.setProdID(prodID);
 		
-		int stock = inventory.getNumStock();
-		if(stock > quantity) {
-			session = request.getSession(true);
-			session.setAttribute("cartItems", cartItems);
-			msg = "Your items have been added to your cart.";
-		} else {
-			msg = "Sorry, but there is " + stock + "left in stock. Please lower your quantity or select a new product";
+		if(inventory.getProdID() == prodID) {
+			if(inventory.getNumStock() > quantity) {
+				cart.addToCart(cartItems);
+				ap.doAddCart(cartItems);
+				ap.doAdd(cartItems);
+				url = "/CartServlet";
+			} else {
+				msg = "Sorry, but there is " + inventory.getNumStock() + "left in stock. Please lower your quantity or select a new product";
+				url = "/cart.jsp";
+			}
 		}*/
+
 		
 		String url = "/CartServlet";
 		
