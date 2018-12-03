@@ -4,10 +4,8 @@
  <%
  Customer cust = (Customer) session.getAttribute("customer");
  
- String table ="";
-   if(table!=null){
-	 table = (String) request.getAttribute("table");
-	} else {
+String table = (String) request.getAttribute("table");
+   if(table == null){
 		table = "Your cart is empty...";
 		table += "<br>";
 		table += "Add something to it! Go to the ";
