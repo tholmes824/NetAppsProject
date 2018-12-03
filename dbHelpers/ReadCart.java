@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import model.Cart;
 import model.CartItems;
+import model.Products;
 
 public class ReadCart {
 	
@@ -37,21 +38,21 @@ public class ReadCart {
 		
 	}
 	
-	public void doRead(Cart c){
-//		String query = "select * from CartItems where cartID = ?";
-//		
-//		try {
-//			PreparedStatement ps = connection.prepareStatement(query);
-//			
-//			ps.setInt(1, this.cartID);
-//			
-//			this.results = ps.executeQuery();
-//			
-//			
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+	public void doRead(CartItems ci){
+		String query = "select * from CartItems where cartID = ?";
+		
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+		
+			ps.setInt(1, this.cartID);
+			
+			this.results = ps.executeQuery();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -79,6 +80,40 @@ public class ReadCart {
 		table += "</table>";
 		return table;
 		}
+	
+	public String getHTMLTable(){
+		String table ="";
+		table += "<table>";
+		
+		try {
+			while(this.results.next()){
+				CartItems ci = new CartItems();
+				ci.setCartID(this.results.getInt("cartID"));
+				ci.setProdID(this.results.getInt("prodID"));
+				ci.setQuantity(this.results.getInt("quantity"));
+				
+				table += "<tr>";
+				table += "<td>";
+					table += ci.getCartID();
+				table += "</td>";
+				table += "<td>";
+					table += ci.getProdID();
+				table += "</td>";
+				table += "<td>";
+					table += ci.getQuantity();
+				table += "</td>";
+					table += "<a href=update?quantity=" + ci.getQuantity() + ">Update</a> <a href=delete?prodID=" + ci.getQuantity() + ">Delete</a>";
+				table += "</tr>";
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		table += "</table>";
+		return table;
+	}
 
 	
 	public CartItems getCartItems(){
