@@ -119,7 +119,7 @@ public class AddProd {
 					table += cartItems.getQuantity();
 				table += "</td>";
 				table += "<td>";
-					table += "<a href=update?quantity=" + cartItems.getCartID() + ">Update</a> <a href=delete?prodID=" + cartItems.getCartID() + ">Delete</a>";
+					table += "<a href=update?quantity=" + cartItems.getCartID() + ">Update</a> <a href=delete?cartID=" + cartItems.getCartID() + ">Delete</a>";
 				table += "</td>";
 				table += "</tr>";
 			}
